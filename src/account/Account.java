@@ -13,7 +13,7 @@ public class Account {
 
     
         private double balance;
-        private double interestRate=0.23;
+        private double interestRate=0.03;
         private String user;
  
      /**constructor that takes the initial balance
@@ -21,7 +21,17 @@ public class Account {
       */
         public Account(double initialBalance,String givenUser)
         {
-            balance=initialBalance;
+            if(initialBalance<50)
+            {
+                System.out.println("Enter amount above $50 to create account");
+                System.exit(0);
+            }
+            else
+            {
+                balance=initialBalance;
+                System.out.println("Account created");
+            }
+            
             user=givenUser;
             //Note that the initial balance must be greater than 50.       
         }
@@ -63,6 +73,11 @@ public class Account {
      */
     public String getUser() {
         return user;
+    }
+    public double findBal()  // method to find final balance after applying interest rate
+    {
+        double curr_bal=balance*interestRate;
+        return curr_bal;
     }
     
     
